@@ -1,0 +1,40 @@
+plugins {
+    id 'fabric-loom' version '1.0-SNAPSHOT'
+    id 'maven-publish'
+}
+
+group = 'com.project.sr3particles'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft 'com.mojang:minecraft:1.19.4'
+    mappings 'net.fabricmc:yarn:1.19.4+build.1:v2'
+    modImplementation 'net.fabricmc:fabric-loader:0.14.21'
+    modImplementation 'net.fabricmc.fabric-api:fabric-api:0.76.0+1.19.4'
+
+    // Java-WebSocket for client networking
+    implementation 'org.java-websocket:Java-WebSocket:1.5.3'
+    implementation 'org.json:json:20230227'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}

@@ -1,0 +1,11 @@
+name: MinecraftWorldBridge
+version: 1.0
+main: com.project.worldbridge.WorldStreamer
+api-version: 1.19
+commands:
+  spawn_sr3_boss:
+    description: Spawns SR3 boss projection
+    usage: /spawn_sr3_boss
+  sr3_status:
+    description: Shows SR3 connection status
+    usage: /sr3_status

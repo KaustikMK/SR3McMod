@@ -1,0 +1,53 @@
+# Java / Gradle
+.gradle/
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
+*.log
+
+# VSCode / JetBrains IDE
+.vscode/
+*.ipr
+*.iws
+*.iml
+
+# CMake / C++ build artifacts
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.dll
+*.lib
+*.pdb
+*.exe
+*.obj
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+
+# Minecraft client config folders (if accidentally added)
+run/
+logs/
+eula.txt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary and backup files
+*.tmp
+*.bak
+*.swp
+
+# User environment configs
+*.code-workspace
