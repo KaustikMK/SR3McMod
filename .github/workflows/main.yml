@@ -38,7 +38,7 @@ jobs:
       # Build FabricMod (Java)
       - name: Build FabricMod
         working-directory: FabricMod
-        run: ./gradlew build --info
+        run: ./gradlew build --debug
 
       # Set up C++ environment
       - name: Install C++ dependencies
