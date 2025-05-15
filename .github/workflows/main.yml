@@ -18,14 +18,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Ensure gradlew exists and is executable
-      - name: Ensure gradlew exists and is executable
+      # Generate gradlew if missing
+      - name: Generate gradlew if missing
+        working-directory: FabricMod
         run: |
-          if [ ! -f ./FabricMod/gradlew ]; then
-            echo "Error: gradlew file is missing in the FabricMod directory."
-            exit 1
+          if [ ! -f ./gradlew ]; then
+            echo "gradlew file is missing. Generating..."
+            gradle wrapper
+            chmod +x ./gradlew
           fi
-          chmod +x ./FabricMod/gradlew
 
       # Set up Java
       - name: Set up Java
