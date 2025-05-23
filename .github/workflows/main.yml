@@ -20,12 +20,20 @@ jobs:
 
       # Generate gradlew if missing
       - name: Generate gradlew if missing
-        working-directory: FabricMod
         run: |
-          if [ ! -f ./gradlew ]; then
-            echo "gradlew file is missing. Generating..."
+          if [ ! -f ./FabricMod/gradlew ]; then
+            echo "gradlew file is missing in FabricMod. Generating..."
+            cd FabricMod
             gradle wrapper
             chmod +x ./gradlew
+            cd ..
+          fi
+          if [ ! -f ./PaperPlugin/gradlew ]; then
+            echo "gradlew file is missing in PaperPlugin. Generating..."
+            cd PaperPlugin
+            gradle wrapper
+            chmod +x ./gradlew
+            cd ..
           fi
 
       # Set up Java
@@ -38,6 +46,11 @@ jobs:
       # Build FabricMod (Java)
       - name: Build FabricMod
         working-directory: FabricMod
+        run: ./gradlew build --debug
+
+      # Build PaperPlugin (Java)
+      - name: Build PaperPlugin
+        working-directory: PaperPlugin
         run: ./gradlew build --debug
 
       # Set up C++ environment
