@@ -28,6 +28,6 @@ public class SR3ParticleProjection implements ClientModInitializer {
         }
 
         // Hook into world render to draw particles every frame
-        WorldRenderEvents.END.register(context -> particleRenderer.renderParticles(MinecraftClient.getInstance(), context));
+        WorldRenderEvents.END.register(context -> particleRenderer.renderParticles(MinecraftClient.getInstance(), context.worldRenderer()));
     }
 }
