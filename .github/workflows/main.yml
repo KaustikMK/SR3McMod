@@ -51,7 +51,7 @@ jobs:
       # Build PaperPlugin (Java)
       - name: Build PaperPlugin
         working-directory: PaperPlugin
-        run: ./gradlew build --debug
+        run: ./gradlew build --debug --stacktrace
 
       # Set up C++ environment
       - name: Install C++ dependencies
