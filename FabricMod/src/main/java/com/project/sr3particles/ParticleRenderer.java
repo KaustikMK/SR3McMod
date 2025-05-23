@@ -5,7 +5,6 @@ import net.minecraft.client.render.WorldRenderer;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.Vec3f;
 import org.joml.Vector3f;
 import org.json.JSONObject;
 
@@ -57,7 +56,7 @@ public class ParticleRenderer {
 
                 if (r + g + b > 0.1f) {
                     Vec3d particlePos = planeOffset.add(x * scale - (FRAME_WIDTH * scale) / 2, y * scale, 0);
-                    mc.world.addParticle(new DustParticleEffect(new Vec3f(r, g, b), 1.0f),
+                    mc.world.addParticle(new DustParticleEffect(new org.joml.Vector3f(r, g, b), 1.0f),
                             particlePos.x, particlePos.y, particlePos.z,
                             0, 0, 0);
                 }
