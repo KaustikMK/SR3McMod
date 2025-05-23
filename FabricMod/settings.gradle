@@ -1,14 +1,14 @@
+// FabricMod/settings.gradle
+
 pluginManagement {
     repositories {
         maven {
-            name = 'Fabric'
             url = 'https://maven.fabricmc.net/'
         }
-        mavenCentral() // Also include Maven Central for other plugins if needed
-        gradlePluginPortal() // And the Gradle Plugin Portal for standard plugins
+        gradlePluginPortal()
+        mavenCentral()
     }
 }
 
-rootProject.name = 'SR3FabricMod'
-// This line sets the root project name, which is good practice for Gradle projects.
-// The important part for the fix is the pluginManagement block.
+rootProject.name = 'FabricModProject' // Using a simple, distinct name
+// rootProject.buildFileName = 'build.gradle' // This is default, but can be explicit
