@@ -12,6 +12,7 @@ A live connection between Saints Row: The Third and Minecraft, projecting your S
 - Two-way communication via a Python bridge server.
 - Physics-based hologram in Minecraft (gravity, collision, bounce effects).
 
+
 ## Project Structure
 
 - `` `/BridgeServer` `` (Python WebSocket relay)
@@ -19,6 +20,18 @@ A live connection between Saints Row: The Third and Minecraft, projecting your S
 - `` `/SR3Mod` `` (Saints Row 3 DLL/ASI mod)
 - `` `/FabricMod` `` (Minecraft client mod for particle projection)
 - `` `/Documentation` `` (License, `.gitignore`, and this README)
+=======
+---
+
+## Project Structure
+
+- `/BridgeServer` (Python WebSocket relay)
+- `/PaperPlugin` (Minecraft Paper server plugin)
+- `/SR3Mod` (Saints Row 3 DLL/ASI mod)
+- `/FabricMod` (Minecraft client mod for particle projection)
+- `/Documentation` (License, .gitignore, and this README)
+
+---
 
 ## Setup Instructions
 
@@ -86,6 +99,70 @@ Start Minecraft with Fabric loader.
 - Check firewall/port settings if SR3 does not connect.
 - Ensure Python bridge server is running.
 - Verify Minecraft `` `latest.log` `` for any mod-related errors.
+- Restart bridge and servers if communication drops.
+
+---
+
+=======
+- Navigate to `BridgeServer/`
+- Install Python dependencies:
+  ```bash
+  pip install websockets
+  ```
+- Run the server:
+  ```bash
+  python bridge_server.py
+  ```
+- Leave it running in the background.
+
+### 2. Minecraft Paper Plugin
+
+- Navigate to `PaperPlugin/`
+- Build with Gradle:
+  ```bash
+  gradlew build
+  ```
+- Place the generated `.jar` file in your PaperMC `plugins/` folder.
+- Start the Paper server and confirm connection.
+- Commands:
+  - `/spawn_sr3_boss` — Initiates projection.
+  - `/sr3_status` — Displays SR3 mod connection status.
+
+### 3. Saints Row 3 Mod
+
+- Build the ASI/DLL mod via CMake + Visual Studio.
+- Place the DLL/ASI file into the SR3 root directory.
+- Include `blackbox_environment.vpp_pc` and `camera_defs.xtbl` in your override folder.
+- Launch SR3; the mod will connect automatically.
+
+### 4. Minecraft Fabric Mod
+
+- Navigate to `FabricMod/`
+- Build with Gradle:
+  ```bash
+  gradlew build
+  ```
+- Place the resulting `.jar` and Fabric API in your `mods/` folder.
+- Start Minecraft with Fabric loader.
+
+---
+
+## Testing Checklist
+
+- Bridge server running and showing client connections.
+- Paper server showing successful plugin load.
+- Minecraft Fabric mod running without errors.
+- SR3 mod injected and connected.
+- Run `/spawn_sr3_boss` on Paper server.
+- Confirm black box creation in SR3 and hologram projection in Minecraft.
+
+---
+
+## Troubleshooting
+
+- Check firewall/port settings if SR3 does not connect.
+- Ensure Python bridge server is running.
+- Verify Minecraft `latest.log` for any mod-related errors.
 - Restart bridge and servers if communication drops.
 
 ---
