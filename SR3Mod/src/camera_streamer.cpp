@@ -2,7 +2,12 @@
 #include "network_client.h"
 #include <iostream>
 #include <thread>
+#ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(ms) usleep((ms) * 1000)
+#endif
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -11,6 +16,8 @@ using json = nlohmann::json;
 // This demonstration simulates sending dummy frames for each camera angle at a fixed interval.
 
 namespace CameraStreamer {
+
+    std::string base64_encode(const unsigned char* bytes_to_encode, unsigned int in_len);
 
     void sendDummyFrame(const std::string& cam_id) {
         // Generate a placeholder RGB data block (128x128, solid color per cam for simulation)

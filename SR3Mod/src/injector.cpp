@@ -1,5 +1,12 @@
-#include <windows.h>
 #include <thread>
+#include <iostream>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(ms) usleep((ms) * 1000)
+#define MessageBoxA(hwnd, text, caption, type) std::cout << text << std::endl
+#endif
 #include "input_listener.h"
 #include "camera_streamer.h"
 #include "voxel_renderer.h"
@@ -37,6 +44,7 @@ void MainThread() {
     }
 }
 
+#ifdef _WIN32
 // DLL entry point
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
@@ -45,3 +53,9 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     }
     return TRUE;
 }
+#else
+int main() {
+    MainThread();
+    return 0;
+}
+#endif

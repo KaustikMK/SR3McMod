@@ -1,6 +1,8 @@
 #include "black_box_spawner.h"
 #include <iostream>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 // These functions and memory hooks would use SR3's modding APIs or memory patching.
 // For demonstration purposes, we’ll simulate calls and debug output.

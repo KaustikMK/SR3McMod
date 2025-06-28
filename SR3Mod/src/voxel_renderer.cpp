@@ -3,6 +3,13 @@
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <mutex>
+#include <thread>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(ms) usleep((ms) * 1000)
+#endif
 
 // This renderer listens for voxel world updates from the network
 // and draws simple wireframe cubes around the stationary boss in the black box.
