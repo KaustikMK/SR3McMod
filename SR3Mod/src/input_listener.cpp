@@ -1,6 +1,14 @@
 #include "input_listener.h"
 #include "network_client.h"
+#ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
+#define Sleep(ms) usleep((ms) * 1000)
+inline short GetAsyncKeyState(int) { return 0; }
+#define VK_SPACE 0x20
+#endif
+#include <thread>
 #include <iostream>
 #include <nlohmann/json.hpp>
 

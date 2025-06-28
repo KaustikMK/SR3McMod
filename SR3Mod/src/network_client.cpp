@@ -5,6 +5,7 @@
 #include <thread>
 #include <mutex>
 #include <nlohmann/json.hpp>
+#include "black_box_spawner.h"
 
 using json = nlohmann::json;
 typedef websocketpp::client<websocketpp::config::asio_client> ws_client;

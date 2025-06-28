@@ -17,6 +17,19 @@ set(SR3_SOURCES
 # Assuming you want to build an executable named SR3Mod_app
 add_executable(SR3Mod_app ${SR3_SOURCES})
 
+# Include our public headers
+target_include_directories(SR3Mod_app
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Link against system libs required for websocketpp
+target_link_libraries(SR3Mod_app
+    PRIVATE
+        pthread
+        boost_system
+)
+
 # If you need to link libraries, you would add them here, e.g.:
 # target_link_libraries(SR3Mod_app PRIVATE some_library)
 # For now, we'll assume no external libraries beyond standard ones are needed
