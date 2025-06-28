@@ -62,8 +62,8 @@ public class ChunkCollector extends BukkitRunnable {
             }
 
             JSONObject playerBox = new JSONObject();
-            Location min = player.getBoundingBox().getMin();
-            Location max = player.getBoundingBox().getMax();
+            var min = player.getBoundingBox().getMin();
+            var max = player.getBoundingBox().getMax();
             playerBox.put("min", new JSONArray(new double[]{min.getX(), min.getY(), min.getZ()}));
             playerBox.put("max", new JSONArray(new double[]{max.getX(), max.getY(), max.getZ()}));
 
