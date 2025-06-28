@@ -15,8 +15,10 @@ sr3_status = {
 }
 
 async def handle_client(websocket, path):
-    """ Handles incoming WebSocket connections from Minecraft and SR3. """
+    """Handles incoming WebSocket connections from Minecraft and SR3."""
     global sr3_status
+
+    client_type = "unknown"
 
     try:
         async for message in websocket:
